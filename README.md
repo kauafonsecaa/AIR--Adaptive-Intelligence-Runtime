@@ -1,7 +1,4 @@
-                          AIR
-
-               Adaptive Intelligence Runtime
-
+            
 <p align="center">
   <strong>Making AI adapt to the hardware it runs on.</strong>
 </p>
