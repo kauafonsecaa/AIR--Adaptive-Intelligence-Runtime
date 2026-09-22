@@ -11,8 +11,7 @@ Adaptive Intelligence Runtime
 <p align="center">
   <a href="#overview">Overview</a> •
   <a href="#why-air">Why AIR</a> •
-  <a href="#core-concept">Core Concept</a> •
-  <a href="#local-ai">Local AI</a> •
+  <a href="#how-it-works">How it works</a> •
   <a href="#vision">Vision</a>
 </p>
 
@@ -53,47 +52,33 @@ The idea
 
 Instead of:
 
-┌───────────────┐
-│     TASK      │
-└───────┬───────┘
-        │
-        ▼
-┌───────────────────┐
-│ FIXED EXECUTION   │
-└─────────┬─────────┘
-          │
-          ▼
-┌───────────────┐
-│   HARDWARE    │
-└───────────────┘
+Task
+  ↓
+Fixed execution
+  ↓
+Hardware
 
 AIR explores:
 
-┌───────────────┐
-│     TASK      │
-└───────┬───────┘
-        │
-        ▼
-┌─────────────────────────┐
-│           AIR           │
-│                         │
-│  Task analysis          │
-│  Resource analysis      │
-│  Execution strategy     │
-│  Runtime adaptation     │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│      AI MODEL /         │
-│     COMPUTE SYSTEM      │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│         HARDWARE        │
-│      CPU / GPU / RAM    │
-└─────────────────────────┘
+                 ┌───────────────┐
+                 │     TASK      │
+                 └───────┬───────┘
+                         ↓
+              ┌────────────────────┐
+              │        AIR         │
+              │                    │
+              │ Task analysis      │
+              │ Resource analysis  │
+              │ Execution strategy │
+              │ Runtime adaptation │
+              └─────────┬──────────┘
+                        ↓
+               ┌─────────────────┐
+               │ AI MODEL /      │
+               │ COMPUTE SYSTEM  │
+               └────────┬────────┘
+                        ↓
+                   HARDWARE
 
 ⸻
 
@@ -101,13 +86,13 @@ Core Concept
 
 AIR is designed around several fundamental capabilities.
 
-1. Task Awareness
+1. Task awareness
 
 AIR can conceptually identify characteristics of the task being requested.
 
 Different tasks can require different execution strategies.
 
-2. Resource Awareness
+2. Resource awareness
 
 AIR considers the computational environment available to the AI system.
 
@@ -120,15 +105,15 @@ This can include:
 * Computational availability
 * Energy considerations
 
-3. Adaptive Execution
+3. Adaptive execution
 
 Instead of relying on one fixed execution strategy, AIR can dynamically select an approach based on the task and available resources.
 
-4. Runtime Optimization
+4. Runtime optimization
 
 AIR focuses on managing computation while the system is running rather than relying exclusively on static configuration.
 
-5. Hardware Adaptation
+5. Hardware adaptation
 
 The same AI system could potentially behave differently depending on the machine where it is executed.
 
@@ -146,8 +131,8 @@ Conceptually:
 │          AI MODEL           │
 └──────────────┬──────────────┘
                │
-               ▼
-┌─────────────────────────────┐
+               │
+┌──────────────▼──────────────┐
 │             AIR             │
 │                             │
 │  Task → Resources → Strategy│
@@ -157,10 +142,10 @@ Conceptually:
 │  Execution Optimization     │
 └──────────────┬──────────────┘
                │
-               ▼
+               ↓
 ┌─────────────────────────────┐
 │          HARDWARE           │
-│        CPU / GPU / RAM      │
+│     CPU / GPU / RAM         │
 └─────────────────────────────┘
 
 The long-term concept is not limited to a particular model architecture, model provider, or hardware platform.
@@ -187,46 +172,25 @@ Example
 
 Imagine a computer with:
 
-┌─────────────────────────┐
-│       COMPUTER          │
-├─────────────────────────┤
-│  6 GB RAM               │
-│  Older CPU              │
-│  No dedicated GPU       │
-└─────────────────────────┘
+6 GB RAM
+Older CPU
+No dedicated GPU
 
 A conventional approach may simply attempt to run a model using a predefined configuration.
 
 AIR explores a different approach:
 
-┌──────────────────────┐
-│    USER REQUEST      │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│    ANALYZE TASK      │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ ANALYZE RESOURCES    │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ DETERMINE STRATEGY   │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│     RUN THE TASK     │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ ADAPT DURING EXEC.   │
-└──────────────────────┘
+User request
+      ↓
+   Analyze task
+      ↓
+Analyze available resources
+      ↓
+Determine execution strategy
+      ↓
+Run the task
+      ↓
+Adapt during execution
 
 The objective is not to magically make weak hardware equivalent to powerful hardware.
 
@@ -238,20 +202,20 @@ From Small Devices to Data Centers
 
 AIR is not intended to be limited to low-end hardware.
 
-The same principle can be applied at different scales:
+The same principle can be applied at different scales.
 
 ┌──────────────────────────────┐
-│       Embedded Devices       │
+│      Embedded Devices        │
 ├──────────────────────────────┤
-│        Phones / Tablets      │
+│      Phones / Tablets        │
 ├──────────────────────────────┤
-│       Personal Computers     │
+│      Personal Computers      │
 ├──────────────────────────────┤
-│         Workstations         │
+│      Workstations            │
 ├──────────────────────────────┤
-│           Servers            │
+│      Servers                 │
 ├──────────────────────────────┤
-│       AI Infrastructure      │
+│      AI Infrastructure      │
 └──────────────────────────────┘
 
 At smaller scales, the goal can be making AI more accessible.
@@ -306,17 +270,13 @@ The long-term vision for AIR is to explore a new layer between AI models and com
 A layer capable of understanding:
 
 What is being requested?
-          │
-          ▼
+        ↓
 How difficult is the task?
-          │
-          ▼
+        ↓
 What resources are available?
-          │
-          ▼
+        ↓
 What execution strategy makes sense?
-          │
-          ▼
+        ↓
 How should computation adapt?
 
 The project aims to investigate whether this approach can contribute to AI systems that are:
@@ -334,8 +294,6 @@ The concepts described in this repository represent the current direction of the
 ⸻
 
 <p align="center">
-  <strong>AIR — Adaptive Intelligence Runtime</strong>
-</p>
-<p align="center">
-  <em>Making AI adapt to the hardware it runs on.</em>
+  <strong>AIR — Adaptive Intelligence Runtime</strong><br>
+  <sub>Making AI adapt to the hardware it runs on.</sub>
 </p>
